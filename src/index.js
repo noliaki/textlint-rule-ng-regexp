@@ -11,38 +11,42 @@ function reporter(context, options = {}) {
     [Syntax.Str](node) {
       const text = getSource(node)
 
-      for (let i = 0, len = options.words.length; i < len; i++) {
-        const item = options.words[i]
-        const pattern = item.pattern
+      return new Promise((resolve, reject) => {
+        for (let i = 0, len = options.words.length; i < len; i++) {
+          const item = options.words[i]
+          const pattern = item.pattern
 
-        if (pattern instanceof RegExp) {
-          pattern.lastIndex = 0
+          if (pattern instanceof RegExp) {
+            pattern.lastIndex = 0
 
-          let matches = pattern.exec(text)
+            let matches = pattern.exec(text)
 
-          while (matches) {
-            const range = [matches.index, matches.index + matches[0].length]
-            const fix = item.replaceText
-              ? fixer.replaceTextRange(range, item.replaceText)
-              : null
+            while (matches) {
+              const range = [matches.index, matches.index + matches[0].length]
+              const fix = item.replaceText
+                ? fixer.replaceTextRange(range, item.replaceText)
+                : null
 
-            report(
-              node,
-              new RuleError(`Match: ${matches[0]}`, {
-                index: matches.index,
-                fix
-              })
-            )
+              report(
+                node,
+                new RuleError(`Match: ${matches[0]}`, {
+                  index: matches.index
+                  // fix
+                })
+              )
 
-            matches = pattern.exec(text)
+              matches = pattern.exec(text)
+            }
           }
         }
-      }
+
+        resolve()
+      })
     }
   }
 }
 
 module.exports = {
-  linter: reporter,
-  fixer: reporter
+  linter: reporter
+  // fixer: reporter
 }

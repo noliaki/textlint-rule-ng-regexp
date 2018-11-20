@@ -16,8 +16,10 @@ tester.run(
         options: {
           words: [
             {
-              pattern: /hoge/g,
-              replaceText: 'fuga'
+              pattern: /hoge/gm
+            },
+            {
+              pattern: /［(.*?)］/gm
             }
           ]
         }
@@ -28,12 +30,12 @@ tester.run(
     valid: [
       // no problem
       'text',
-      'hotextge'
+      'hotextge',
+      '[ほげほげ]'
     ],
     invalid: [
       {
         text: 'fugamogehoge',
-        output: 'fugamogefuga',
         errors: [
           {
             message: 'Match: hoge',
@@ -43,12 +45,21 @@ tester.run(
         ]
       },
       {
+        text: '［ほげほげ］',
+        errors: [
+          {
+            message: 'Match: ［ほげほげ］',
+            line: 1,
+            column: 0 + 1
+          }
+        ]
+      },
+      {
         text: `hogefugafuga
 
-ahogehoge`,
-        output: `fugafugafuga
+ahogehoge
 
-afugafuga`,
+［ほげほげ］［ほげほげ］`,
         errors: [
           {
             message: 'Match: hoge',
@@ -64,6 +75,16 @@ afugafuga`,
             message: 'Match: hoge',
             line: 3,
             column: 5 + 1
+          },
+          {
+            message: 'Match: ［ほげほげ］',
+            line: 5,
+            column: 0 + 1
+          },
+          {
+            message: 'Match: ［ほげほげ］',
+            line: 5,
+            column: 6 + 1
           }
         ]
       }
