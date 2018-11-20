@@ -5,7 +5,7 @@ function reporter(context, options = {}) {
     return
   }
 
-  const { Syntax, RuleError, fixer, report, getSource } = context
+  const { Syntax, RuleError, report, getSource } = context
 
   return {
     [Syntax.Str](node) {
@@ -22,16 +22,10 @@ function reporter(context, options = {}) {
             let matches = pattern.exec(text)
 
             while (matches) {
-              const range = [matches.index, matches.index + matches[0].length]
-              const fix = item.replaceText
-                ? fixer.replaceTextRange(range, item.replaceText)
-                : null
-
               report(
                 node,
                 new RuleError(`Match: ${matches[0]}`, {
                   index: matches.index
-                  // fix
                 })
               )
 

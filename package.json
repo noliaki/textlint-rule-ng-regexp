@@ -22,13 +22,14 @@
     "eslint-plugin-standard": "^4.0.0",
     "textlint-scripts": "^1.2.4"
   },
-  "name": "textlint-rule-ng-regexp",
+  "name": "@noliaki/textlint-rule-ng-regexp",
   "directories": {
+    "lib": "lib",
     "test": "test"
   },
   "author": "",
   "license": "MIT",
-  "description": "",
+  "description": "## Install",
   "dependencies": {
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
@@ -51,5 +52,13 @@
     "ignore": [
       "lib/"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noliaki/textlint-rule-ng-regexp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noliaki/textlint-rule-ng-regexp/issues"
+  },
+  "homepage": "https://github.com/noliaki/textlint-rule-ng-regexp#readme"
 }

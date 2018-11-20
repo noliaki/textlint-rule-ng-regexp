@@ -4,7 +4,7 @@
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install textlint-rule-ng-regexp
+    npm install @noliaki/textlint-rule-ng-regexp
 
 ## Usage
 
@@ -13,7 +13,13 @@ Via `.textlintrc`(Recommended)
 ```json
 {
   "rules": {
-    "regexp-rules": true
+    "ng-regexp": {
+      "words": [
+        {
+          "pattern": /hoge/g
+        }
+      ]
+    }
   }
 }
 ```
@@ -21,7 +27,7 @@ Via `.textlintrc`(Recommended)
 Via CLI
 
 ```
-textlint --rule regexp-rules README.md
+textlint --rule ng-regexp README.md
 ```
 
 ### Build
