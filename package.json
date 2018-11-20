@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.1",
   "keywords": [
     "textlintrule"
   ],
@@ -22,7 +22,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "textlint-scripts": "^1.2.4"
   },
-  "name": "@noliaki/textlint-rule-ng-regexp",
+  "name": "textlint-rule-ng-regexp",
   "directories": {
     "lib": "lib",
     "test": "test"

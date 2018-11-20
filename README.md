@@ -4,7 +4,7 @@
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install @noliaki/textlint-rule-ng-regexp
+    npm install textlint-rule-ng-regexp
 
 ## Usage
 
