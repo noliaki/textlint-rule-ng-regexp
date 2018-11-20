@@ -16,10 +16,10 @@ tester.run(
         options: {
           words: [
             {
-              pattern: /hoge/gm
+              pattern: ['hoge', 'g']
             },
             {
-              pattern: /［(.*?)］/gm
+              pattern: ['［(.*?)］', 'g']
             }
           ]
         }

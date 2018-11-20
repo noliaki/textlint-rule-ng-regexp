@@ -16,7 +16,7 @@ Via `.textlintrc`(Recommended)
     "ng-regexp": {
       "words": [
         {
-          "pattern": /hoge/g
+          "pattern": ["hoge", "g"]
         }
       ]
     }

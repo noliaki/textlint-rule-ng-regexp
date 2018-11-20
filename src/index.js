@@ -14,23 +14,20 @@ function reporter(context, options = {}) {
       return new Promise((resolve, reject) => {
         for (let i = 0, len = options.words.length; i < len; i++) {
           const item = options.words[i]
-          const pattern = item.pattern
+          const pattern = new RegExp(item.pattern[0], item.pattern[1])
+          pattern.lastIndex = 0
 
-          if (pattern instanceof RegExp) {
-            pattern.lastIndex = 0
+          let matches = pattern.exec(text)
 
-            let matches = pattern.exec(text)
+          while (matches) {
+            report(
+              node,
+              new RuleError(`Match: ${matches[0]}`, {
+                index: matches.index
+              })
+            )
 
-            while (matches) {
-              report(
-                node,
-                new RuleError(`Match: ${matches[0]}`, {
-                  index: matches.index
-                })
-              )
-
-              matches = pattern.exec(text)
-            }
+            matches = pattern.exec(text)
           }
         }
 
