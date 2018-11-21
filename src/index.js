@@ -27,7 +27,7 @@ function reporter(context, options = {}) {
           while (matches) {
             report(
               node,
-              new RuleError(`ng-regexp: ${matches[0]}`, {
+              new RuleError(`"${pattern}" matches "${matches[0]}".`, {
                 index: matches.index
               })
             )

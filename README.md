@@ -10,13 +10,19 @@ Install with [npm](https://www.npmjs.com/):
 
 Via `.textlintrc`(Recommended)
 
-```json
+```js
 {
   "rules": {
     "ng-regexp": {
       "words": [
         {
-          "pattern": ["hoge", "g"]
+          // first item is RegExp pattern
+          // second is RegExp option: "i", "g", "m". Default: "g".
+          // Any option is added "g" option
+          "pattern": ["hoge"]
+        },
+        {
+          "pattern": ["fuga", "i"]
         }
       ]
     }

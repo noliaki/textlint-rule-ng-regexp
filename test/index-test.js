@@ -38,7 +38,7 @@ tester.run(
         text: 'fugamogehoge',
         errors: [
           {
-            message: 'ng-regexp: hoge',
+            message: '"/hoge/g" matches "hoge".',
             line: 1,
             column: 8 + 1
           }
@@ -48,7 +48,7 @@ tester.run(
         text: '［ほげほげ］',
         errors: [
           {
-            message: 'ng-regexp: ［ほげほげ］',
+            message: '"/［(.*?)］/g" matches "［ほげほげ］".',
             line: 1,
             column: 0 + 1
           }
@@ -62,27 +62,27 @@ ahogehoge
 ［ほげほげ］［ほげほげ］`,
         errors: [
           {
-            message: 'ng-regexp: hoge',
+            message: '"/hoge/g" matches "hoge".',
             line: 1,
             column: 0 + 1
           },
           {
-            message: 'ng-regexp: hoge',
+            message: '"/hoge/g" matches "hoge".',
             line: 3,
             column: 1 + 1
           },
           {
-            message: 'ng-regexp: hoge',
+            message: '"/hoge/g" matches "hoge".',
             line: 3,
             column: 5 + 1
           },
           {
-            message: 'ng-regexp: ［ほげほげ］',
+            message: '"/［(.*?)］/g" matches "［ほげほげ］".',
             line: 5,
             column: 0 + 1
           },
           {
-            message: 'ng-regexp: ［ほげほげ］',
+            message: '"/［(.*?)］/g" matches "［ほげほげ］".',
             line: 5,
             column: 6 + 1
           }
