@@ -1,5 +1,7 @@
 # textlint-rule-ng-regexp
 
+[![CircleCI](https://circleci.com/gh/noliaki/textlint-rule-ng-regexp.svg?style=svg)](https://circleci.com/gh/noliaki/textlint-rule-ng-regexp)
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
