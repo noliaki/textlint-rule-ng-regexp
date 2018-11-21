@@ -1,7 +1,7 @@
 'use strict'
 
 function reporter(context, options = {}) {
-  if (!options.words.length) {
+  if (!options.words || !options.words.length) {
     return
   }
 
@@ -14,7 +14,12 @@ function reporter(context, options = {}) {
       return new Promise((resolve, reject) => {
         for (let i = 0, len = options.words.length; i < len; i++) {
           const item = options.words[i]
-          const pattern = new RegExp(item.pattern[0], item.pattern[1])
+          const regexpOption = item.pattern[1]
+            ? item.pattern[1].indexOf('g') > -1
+              ? item.pattern[1]
+              : item.pattern[1] + 'g'
+            : 'g'
+          const pattern = new RegExp(item.pattern[0], regexpOption)
           pattern.lastIndex = 0
 
           let matches = pattern.exec(text)
@@ -22,7 +27,7 @@ function reporter(context, options = {}) {
           while (matches) {
             report(
               node,
-              new RuleError(`Match: ${matches[0]}`, {
+              new RuleError(`ng-regexp: ${matches[0]}`, {
                 index: matches.index
               })
             )
