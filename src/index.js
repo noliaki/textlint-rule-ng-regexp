@@ -24,13 +24,19 @@ function reporter(context, options = {}) {
           let matches = pattern.exec(text)
 
           while (matches) {
-            console.log(containsExcludePattern(matches, excludeMatched))
             if (!containsExcludePattern(matches, excludeMatched)) {
+              const correctWord = item.correct
+                ? `\n[correct word] "${item.correct}".`
+                : ''
+
               report(
                 node,
-                new RuleError(`"${pattern}" matches "${matches[0]}".`, {
-                  index: matches.index
-                })
+                new RuleError(
+                  `"${pattern}" matches "${matches[0]}".${correctWord}`,
+                  {
+                    index: matches.index
+                  }
+                )
               )
             }
 
