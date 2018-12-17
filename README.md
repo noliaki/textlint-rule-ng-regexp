@@ -19,12 +19,17 @@ Via `.textlintrc`(Recommended)
       "words": [
         {
           // first item is RegExp pattern
-          // second is RegExp option: "i", "g", "m". Default: "g".
-          // Any option is added "g" option
-          "pattern": ["hoge"]
+          // second is RegExp flag: "i", "g", "m". Default: "g".
+          // Any option is added "g" flag
+          "pattern": ["hoge"] // => new RegExp('hoge', 'g')
         },
         {
-          "pattern": ["fuga", "i"]
+          "pattern": ["fuga", "i"] // => new RegExp('fuga', 'ig')
+        },
+        {
+          "pattern": ["piyo", "i"], // => new RegExp('piyo', 'ig')
+          "exclude": ["piyopiyo"], // => new RegExp('piyopiyo', 'g')
+          "correct": "ponyo"
         }
       ]
     }

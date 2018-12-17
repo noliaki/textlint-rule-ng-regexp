@@ -20,6 +20,18 @@ tester.run(
             },
             {
               pattern: ['［(.*?)］', 'g']
+            },
+            {
+              pattern: ['exclude', 'g'],
+              exclude: ['exclude-this-item']
+            },
+            {
+              pattern: ['piyo', 'g'],
+              exclude: ['piyopiyo']
+            },
+            {
+              pattern: ['poyo'],
+              correct: 'ponyo'
             }
           ]
         }
@@ -31,9 +43,31 @@ tester.run(
       // no problem
       'text',
       'hotextge',
-      '[ほげほげ]'
+      '[ほげほげ]',
+      'pattern-exclude-this-item',
+      'piyopiyo'
     ],
     invalid: [
+      {
+        text: 'poyo',
+        errors: [
+          {
+            message: `"/poyo/g" matches "poyo".\n[correct word] "ponyo".`,
+            line: 1,
+            column: 0 + 1
+          }
+        ]
+      },
+      {
+        text: 'piyopiyopiyo',
+        errors: [
+          {
+            message: `"/piyo/g" matches "piyo".`,
+            line: 1,
+            column: 8 + 1
+          }
+        ]
+      },
       {
         text: 'fugamogehoge',
         errors: [
