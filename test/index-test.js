@@ -20,6 +20,10 @@ tester.run(
             },
             {
               pattern: ['［(.*?)］', 'g']
+            },
+            {
+              pattern: ['exclude', 'g'],
+              exclude: ['exclude-this-item']
             }
           ]
         }
@@ -31,7 +35,8 @@ tester.run(
       // no problem
       'text',
       'hotextge',
-      '[ほげほげ]'
+      '[ほげほげ]',
+      'pattern-exclude-this-item'
     ],
     invalid: [
       {
