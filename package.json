@@ -31,7 +31,7 @@
   "license": "MIT",
   "description": "## Install",
   "dependencies": {
-    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.0.0",
     "husky": "^1.1.4",
     "lint-staged": "^8.0.5",
